@@ -79292,7 +79292,7 @@ module.exports = {
         return model[prop] === user.id;
     },
     isAdmin: function isAdmin() {
-        return ['JohnDoe', 'JaneDoe'].includes(user.name);
+        return user.isAdmin;
     }
 };
 
@@ -80158,7 +80158,7 @@ var Component = __webpack_require__(5)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/jeffreyway/code/council/resources/assets/js/components/Flash.vue"
+Component.options.__file = "/Users/calidus/codecalidus/council/resources/assets/js/components/Flash.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Flash.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80361,7 +80361,7 @@ var Component = __webpack_require__(5)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/jeffreyway/code/council/resources/assets/js/components/Paginator.vue"
+Component.options.__file = "/Users/calidus/codecalidus/council/resources/assets/js/components/Paginator.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Paginator.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80525,7 +80525,7 @@ var Component = __webpack_require__(5)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/jeffreyway/code/council/resources/assets/js/components/UserNotifications.vue"
+Component.options.__file = "/Users/calidus/codecalidus/council/resources/assets/js/components/UserNotifications.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] UserNotifications.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80652,7 +80652,7 @@ var Component = __webpack_require__(5)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/jeffreyway/code/council/resources/assets/js/components/AvatarForm.vue"
+Component.options.__file = "/Users/calidus/codecalidus/council/resources/assets/js/components/AvatarForm.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AvatarForm.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80764,7 +80764,7 @@ var Component = __webpack_require__(5)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/jeffreyway/code/council/resources/assets/js/components/ImageUpload.vue"
+Component.options.__file = "/Users/calidus/codecalidus/council/resources/assets/js/components/ImageUpload.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ImageUpload.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -80905,7 +80905,7 @@ var Component = __webpack_require__(5)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/jeffreyway/code/council/resources/assets/js/components/Wysiwyg.vue"
+Component.options.__file = "/Users/calidus/codecalidus/council/resources/assets/js/components/Wysiwyg.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Wysiwyg.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -81372,7 +81372,7 @@ var Component = __webpack_require__(5)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/jeffreyway/code/council/resources/assets/js/pages/Thread.vue"
+Component.options.__file = "/Users/calidus/codecalidus/council/resources/assets/js/pages/Thread.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -81477,7 +81477,7 @@ var Component = __webpack_require__(5)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/jeffreyway/code/council/resources/assets/js/components/Replies.vue"
+Component.options.__file = "/Users/calidus/codecalidus/council/resources/assets/js/components/Replies.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Replies.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -81609,7 +81609,7 @@ var Component = __webpack_require__(5)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/jeffreyway/code/council/resources/assets/js/components/Reply.vue"
+Component.options.__file = "/Users/calidus/codecalidus/council/resources/assets/js/components/Reply.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Reply.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -81730,6 +81730,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             flash('Updated!');
         },
+        cancel: function cancel() {
+            this.editing = false;
+
+            this.body = this.reply.body;
+        },
         destroy: function destroy() {
             axios.delete('/replies/' + this.id);
 
@@ -81760,7 +81765,7 @@ var Component = __webpack_require__(5)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/jeffreyway/code/council/resources/assets/js/components/Favorite.vue"
+Component.options.__file = "/Users/calidus/codecalidus/council/resources/assets/js/components/Favorite.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Favorite.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -82173,9 +82178,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "button"
     },
     on: {
-      "click": function($event) {
-        _vm.editing = false
-      }
+      "click": _vm.cancel
     }
   }, [_vm._v("Cancel")])])]) : _c('div', {
     domProps: {
@@ -82227,7 +82230,7 @@ var Component = __webpack_require__(5)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/jeffreyway/code/council/resources/assets/js/components/NewReply.vue"
+Component.options.__file = "/Users/calidus/codecalidus/council/resources/assets/js/components/NewReply.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] NewReply.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -82279,6 +82282,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -82289,6 +82298,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             body: ''
         };
     },
+
+
+    computed: {
+        confirmed: function confirmed() {
+            return window.App.user.confirmed;
+        }
+    },
+
     mounted: function mounted() {
         $('#body').atwho({
             at: "@",
@@ -83985,7 +84002,7 @@ $.fn.atwho.debug = false;
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [(_vm.signedIn) ? _c('div', [_c('div', {
+  return _c('div', [(!_vm.signedIn) ? _c('div', [_vm._m(0)]) : (!_vm.confirmed) ? _c('div', [_vm._v("\n        To participate in this thread, please check your email and confirm your account.\n    ")]) : _c('div', [_c('div', {
     staticClass: "form-group"
   }, [_c('wysiwyg', {
     attrs: {
@@ -84007,14 +84024,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.addReply
     }
-  }, [_vm._v("Post")])]) : _c('p', {
+  }, [_vm._v("Post")])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', {
     staticClass: "text-center"
-  }, [_vm._v("\n        Please "), _c('a', {
+  }, [_vm._v("\n            Please "), _c('a', {
     attrs: {
       "href": "/login"
     }
-  }, [_vm._v("sign in")]), _vm._v(" to participate in this\n        discussion.\n    ")])])
-},staticRenderFns: []}
+  }, [_vm._v("sign in")]), _vm._v(" to participate in this\n            discussion.\n        ")])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -84079,7 +84098,7 @@ var Component = __webpack_require__(5)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/jeffreyway/code/council/resources/assets/js/components/SubscribeButton.vue"
+Component.options.__file = "/Users/calidus/codecalidus/council/resources/assets/js/components/SubscribeButton.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] SubscribeButton.vue: functional components are not supported with templates, they should use render functions.")}
 
