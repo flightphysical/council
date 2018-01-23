@@ -3,6 +3,7 @@
 return [
     'administrators' => [
         'v@v.com',
+        'b@b.com',
         // Add the email addresses of users who should be administrators here.
     ],
     'reputation' => [
