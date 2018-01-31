@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/bubba', function () {
+    return "Hey Bubba";
+});
+
 Route::redirect('/', 'threads');
 
 Auth::routes();
