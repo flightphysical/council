@@ -47,5 +47,6 @@
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 @yield('scripts')
+<p class="text-center"><img src="images/logo_90.png"></p>
 </body>
 </html>
