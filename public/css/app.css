@@ -8350,3 +8350,21 @@ button.close {
   }
 }
 
+#header_fp {
+  width:100%;
+  background-image:url("/images/sandy_blue99.png");
+  background-repeat:repeat-x;
+  background-color:#12243f;
+  height:99px;
+  margin: 10 auto;
+  margin-bottom:1px;
+  border-bottom:1px solid #ccc;
+  border-top:1px solid #ccc;
+}
+wip
+#header_ww_fp {
+  background-image: url("/images/ww_plane_99_12pc.png");
+  background-repeat: no-repeat;
+  background-position: right;
+
+}

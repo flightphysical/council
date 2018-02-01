@@ -36,7 +36,14 @@
     @yield('head')
 </head>
 <body>
-<p class="text-center"><img src="images/logo_90.png"></p>
+<div id='header_fp'>
+    <div id='header_ww_fp'>
+               <div id='logo'>
+            <img src='images/logo_90.png' width='375' height='90' alt='FlightPhysical.com' >
+        </div> <!-- end header logo -->
+    </div>  <!-- end header_ww -->
+</div> <!-- end header -->
+
 <div id="app">
     @include ('layouts.nav')
 
