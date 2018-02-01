@@ -39,7 +39,7 @@
 <div id='header_fp'>
     <div id='header_ww_fp'>
                <div id='logo'>
-            <img src='images/logo_90.png' width='375' height='90' alt='FlightPhysical.com' >
+            <p class='text-center'></p><img src='/images/logo_90.png' width='375' height='90' alt='FlightPhysical.com' >
         </div> <!-- end header logo -->
     </div>  <!-- end header_ww -->
 </div> <!-- end header -->
