@@ -93,6 +93,17 @@ class ChannelAdministrationTest extends TestCase
 
         $this->assertTrue($channel->fresh()->archived);
     }
+    
+    /** @test */
+    public function the_path_to_a_channel_is_unaffected_by_its_archived_status()
+    {
+        $thread = create('App\Thread');
+        $path = $thread->path();
+
+        $thread->channel->archive();
+
+        $this->assertEquals($path, $thread->fresh()->path());
+    }
 
     /** @test */
     public function a_channel_requires_a_name()
