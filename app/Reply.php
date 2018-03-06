@@ -28,7 +28,7 @@ class Reply extends Model
      *
      * @var array
      */
-    protected $appends = ['favoritesCount', 'isFavorited', 'isBest'];
+    protected $appends = ['favoritesCount', 'isFavorited', 'isBest', 'xp', 'path'];
 
     /**
      * Boot the reply instance.
@@ -47,6 +47,10 @@ class Reply extends Model
             $reply->thread->decrement('replies_count');
 
             $reply->owner->loseReputation('reply_posted');
+
+            if ($reply->isBest()) {
+                $reply->owner->loseReputation('best_reply_awarded');
+            }
         });
     }
 
@@ -99,6 +103,14 @@ class Reply extends Model
     }
 
     /**
+     * Fetch the path to the thread as a property.
+     */
+    public function getPathAttribute()
+    {
+        return $this->path();
+    }
+
+    /**
      * Access the body attribute.
      *
      * @param  string $body
@@ -141,5 +153,19 @@ class Reply extends Model
     public function getIsBestAttribute()
     {
         return $this->isBest();
+    }
+
+    /**
+     * Calculate the correct XP amount earned for the current reply.
+     */
+    public function getXpAttribute()
+    {
+        $xp = config('council.reputation.reply_posted');
+
+        if ($this->isBest()) {
+            $xp += config('council.reputation.best_reply_awarded');
+        }
+
+        return $xp += $this->favorites()->count() * config('council.reputation.reply_favorited');
     }
 }

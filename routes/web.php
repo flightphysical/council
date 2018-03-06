@@ -18,7 +18,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('threads', 'ThreadsController@index')->name('threads');
-Route::get('threads/create', 'ThreadsController@create')->middleware('must-be-confirmed')->name('threads.create');
 Route::get('threads/search', 'SearchController@show')->name('search.show');
 Route::get('threads/{channel}/{thread}', 'ThreadsController@show')->name('threads.show');
 Route::patch('threads/{channel}/{thread}', 'ThreadsController@update')->name('threads.update');
@@ -46,6 +45,7 @@ Route::post('/replies/{reply}/favorites', 'FavoritesController@store')->name('re
 Route::delete('/replies/{reply}/favorites', 'FavoritesController@destroy')->name('replies.unfavorite');
 
 Route::get('/profiles/{user}', 'ProfilesController@show')->name('profile');
+Route::get('/profiles/{user}/activity', 'ProfilesController@index')->name('activity');
 Route::get('/profiles/{user}/notifications', 'UserNotificationsController@index')->name('user-notifications');
 Route::delete('/profiles/{user}/notifications/{notification}', 'UserNotificationsController@destroy')->name('user-notification.destroy');
 

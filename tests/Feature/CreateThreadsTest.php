@@ -24,25 +24,21 @@ class CreateThreadsTest extends TestCase
     }
 
     /** @test */
-    function guests_may_not_create_threads()
+    public function guests_may_not_create_threads()
     {
         $this->withExceptionHandling();
 
-        $this->get('/threads/create')
-            ->assertRedirect(route('login'));
-
-        $this->post(route('threads'))
-            ->assertRedirect(route('login'));
+        $this->post(route('threads'))->assertStatus(302)->assertRedirect(route('login'));
     }
 
     /** @test */
     function new_users_must_first_confirm_their_email_address_before_creating_threads()
     {
-        $user = factory('App\User')->states('unconfirmed')->create();
+        $user = factory(\App\User::class)->states('unconfirmed')->create();
 
         $this->signIn($user);
 
-        $thread = make('App\Thread');
+        $thread = make(\App\Thread::class);
 
         $this->post(route('threads'), $thread->toArray())
             ->assertRedirect(route('threads'))
@@ -76,7 +72,7 @@ class CreateThreadsTest extends TestCase
     /** @test */
     function a_thread_requires_recaptcha_verification()
     {
-        if ( Recaptcha::isInTestMode() ) {
+        if (Recaptcha::isInTestMode()) {
             $this->markTestSkipped("Recaptcha is in test mode.");
         }
 
@@ -89,7 +85,7 @@ class CreateThreadsTest extends TestCase
     /** @test */
     function a_thread_requires_a_valid_channel()
     {
-        factory('App\Channel', 2)->create();
+        factory(\App\Channel::class, 2)->create();
 
         $this->publishThread(['channel_id' => null])
             ->assertSessionHasErrors('channel_id');
@@ -103,7 +99,7 @@ class CreateThreadsTest extends TestCase
     {
         $this->signIn();
 
-        $thread = create('App\Thread', ['title' => 'Foo Title']);
+        $thread = create(\App\Thread::class, ['title' => 'Foo Title']);
 
         $this->assertEquals($thread->slug, 'foo-title');
 
@@ -117,7 +113,7 @@ class CreateThreadsTest extends TestCase
     {
         $this->signIn();
 
-        $thread = create('App\Thread', ['title' => 'Some Title 24']);
+        $thread = create(\App\Thread::class, ['title' => 'Some Title 24']);
 
         $thread = $this->postJson(route('threads'), $thread->toArray() + ['g-recaptcha-response' => 'token'])->json();
 
@@ -129,7 +125,7 @@ class CreateThreadsTest extends TestCase
     {
         $this->withExceptionHandling();
 
-        $thread = create('App\Thread');
+        $thread = create(\App\Thread::class);
 
         $this->delete($thread->path())->assertRedirect('/login');
 
@@ -142,8 +138,8 @@ class CreateThreadsTest extends TestCase
     {
         $this->signIn();
 
-        $thread = create('App\Thread', ['user_id' => auth()->id()]);
-        $reply = create('App\Reply', ['thread_id' => $thread->id]);
+        $thread = create(\App\Thread::class, ['user_id' => auth()->id()]);
+        $reply = create(\App\Reply::class, ['thread_id' => $thread->id]);
 
         $response = $this->json('DELETE', $thread->path());
 
@@ -158,7 +154,7 @@ class CreateThreadsTest extends TestCase
     /** @test */
     public function a_new_thread_cannot_be_created_in_an_archived_channel()
     {
-        $channel = factory('App\Channel')->create(['archived' => true]);
+        $channel = factory(\App\Channel::class)->create(['archived' => true]);
 
         $this->publishThread(['channel_id' => $channel->id])
             ->assertSessionHasErrors('channel_id');
@@ -170,7 +166,7 @@ class CreateThreadsTest extends TestCase
     {
         $this->withExceptionHandling()->signIn();
 
-        $thread = make('App\Thread', $overrides);
+        $thread = make(\App\Thread::class, $overrides);
 
         return $this->post(route('threads'), $thread->toArray() + ['g-recaptcha-response' => 'token']);
     }

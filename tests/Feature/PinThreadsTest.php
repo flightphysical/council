@@ -17,7 +17,7 @@ class PinThreadsTest extends TestCase
 
         $this->signIn();
 
-        $thread = create('App\Thread', ['user_id' => auth()->id()]);
+        $thread = create(\App\Thread::class, ['user_id' => auth()->id()]);
 
         $this->post(route('pinned-threads.store', $thread))->assertStatus(403);
 
@@ -25,11 +25,25 @@ class PinThreadsTest extends TestCase
     }
 
     /** @test */
+    public function regular_users_cannot_unpin_threads()
+    {
+        $this->withExceptionHandling();
+
+        $this->signIn();
+
+        $thread = create(\App\Thread::class, ['user_id' => auth()->id(), 'pinned' => true]);
+
+        $this->delete(route('pinned-threads.destroy', $thread))->assertStatus(403);
+
+        $this->assertTrue($thread->fresh()->pinned);
+    }
+
+    /** @test */
     public function administrators_can_pin_threads()
     {
         $this->signInAdmin();
 
-        $thread = create('App\Thread');
+        $thread = create(\App\Thread::class);
 
         $this->post(route('pinned-threads.store', $thread));
 
@@ -41,7 +55,7 @@ class PinThreadsTest extends TestCase
     {
         $this->signInAdmin();
 
-        $thread = create('App\Thread', ['pinned' => true]);
+        $thread = create(\App\Thread::class, ['pinned' => true]);
 
         $this->delete(route('pinned-threads.destroy', $thread));
 
@@ -56,22 +70,16 @@ class PinThreadsTest extends TestCase
         $threads = create(Thread::class, [], 3);
         $ids = $threads->pluck('id');
 
-        $this->getJson(route('threads'))->assertJson([
-            'data' => [
-                ['id' => $ids[0]],
-                ['id' => $ids[1]],
-                ['id' => $ids[2]]
-            ]
-        ]);
-        
+        $response_data = $this->getJson(route('threads'))->decodeResponseJson()['data'];
+        $this->assertEquals($ids[0], $response_data[0]['id']);
+        $this->assertEquals($ids[1], $response_data[1]['id']);
+        $this->assertEquals($ids[2], $response_data[2]['id']);
+
         $this->post(route('pinned-threads.store', $pinned = $threads->last()));
 
-        $this->getJson(route('threads'))->assertJson([
-            'data' => [
-                ['id' => $pinned->id],
-                ['id' => $ids[0]],
-                ['id' => $ids[1]]
-            ]
-        ]);
+        $response_data = $this->getJson(route('threads'))->decodeResponseJson()['data'];
+        $this->assertEquals($pinned->id, $response_data[0]['id']);
+        $this->assertEquals($ids[0], $response_data[1]['id']);
+        $this->assertEquals($ids[1], $response_data[2]['id']);
     }
 }
