@@ -13,7 +13,7 @@ return [
     */
 
 
-    'name' => 'FlightPhysical Beta',
+    'name' => 'FlightPhysical.Beta',
 
 
     /*
